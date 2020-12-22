@@ -1,0 +1,50 @@
+<table>
+  <tr>
+    <th>Cliente</th>
+    <th>Endereço</th>
+    <th>Banco</th>
+    <th>Solicitação</th>
+    <th>Status</th>
+  </tr>
+  <tr *ngFor='let client of clients'>
+    <td>
+      <h4>{{ client.nome }}</h4>
+      <p>CPF: {{ client.cpf }}</p>
+      <p>Email: {{ client.email }}</p>
+      <p>Telefone: {{ client.telefone }}</p>
+      <p>Nascimento: {{ client.nascimento }}</p>
+      <p>Sexo: {{ client.sexo }}</p>
+
+    </td>
+    <td>
+      <p>CEP: {{ client.cep }}</p>
+      <p>Logradouro: {{ client.rua }}</p>
+      <p>Bairro: {{ client.bairro }}</p>
+      <p>Cidade: {{ client.cidade }}</p>
+      <p>Estado: {{ client.estado }}</p>
+    </td>
+    <td>
+      <p>Banco: {{ client.banco }}</p>
+      <p>Agencia: {{ client.agencia }}</p>
+      <p>Conta: {{ client.conta }}</p>
+    </td>
+    <td>
+      <p>Ocupação: {{ client.emprego }}</p>
+      <p>Renda: {{ client.renda }}</p>
+      <p>Valor Solicitado: {{ client.valorSolicitado }}</p>
+      <p>Convenio: {{ client.convenio }}</p>
+    </td>
+    <td>
+      <mat-form-field appearance="fill">
+        <mat-label style='color: black' [(ngModel)]="client_status[0]">{{ client_status[client.index] }}</mat-label>
+        <mat-select>
+          <mat-option [value]="SolicitacaoEnviada" (click)='changeClientStatus("Solicitacao Enviada", client.index)'>Solicitação Enviada</mat-option>
+          <mat-option [value]="EmAnalise" (click)='changeClientStatus("Em Analise", client.index)'>Em Análise</mat-option>
+          <mat-option [value]="SolicitacaoNegada" (click)='changeClientStatus("Solicitacao Negada", client.index)'>Solicitação Negada</mat-option>
+          <mat-option [value]="SolicitacaoAprovada" (click)='changeClientStatus("Solicitacao Aprovada", client.index)'>Solicitação Aprovada</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </td>
+  </tr>
+</table>
+<div id='hl'></div>
